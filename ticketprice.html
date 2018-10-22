@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ticket price</title>
+	<script>
+		var age = 18;
+		var price = 100;
+		var priceMultiplier;
+
+		if (age <= 18 || age >= 65) {
+			priceMultiplier = 50/100;
+		} else if (age >= 19 && age < 40) {
+			priceMultiplier = 100/100;
+		} else if (age >= 40 && age < 65) {
+			priceMultiplier = 75/100;
+		}
+
+		console.log("Ticket price is RM" + price * priceMultiplier);
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>
