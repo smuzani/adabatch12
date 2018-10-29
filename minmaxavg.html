@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>minmaxavg</title>
+	<script>
+		var input = [1,2,3,10];
+		console.log(avg(input));
+
+		function avg(array) {
+			var total = 0;
+			var numbers = array.length;
+			for (var i = 0; i < array.length; i++) {
+				total += array[i];
+			}
+			return total/numbers;
+		}
+	</script>
+</head>
+<body>
+</body>
+</html>

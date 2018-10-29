@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>functions</title>
+	<script>
+		var size = getSize(5, 10, 2);
+		console.log(size);
+		console.log("The area is " + size[0] + " and the volume is " + size[1]);
+
+
+		function getArea(width, height) {
+			return width * height;
+		}
+
+		function getSize(width, height, depth) {
+			var area = getArea(width, height);
+			var volume = width * height * depth;
+			var sizes = [area, volume];
+			return sizes;
+		}
+	</script>
+</head>
+<body>
+
+</body>
+</html>
