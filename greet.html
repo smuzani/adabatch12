@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>greetings</title>
+	<script>
+		var now = new Date();
+		var nowHours = now.getHours();
+
+		if (nowHours > 7 && nowHours <= 13) {
+			document.write("Good Morning");
+		} else if (nowHours > 13 && nowHours <= 17) {
+			document.write("Good Afternoon");
+		} else if (nowHours > 17 && nowHours <= 19) {
+			document.write("Good Evening");
+		} else {
+			document.write("Good Night");
+		}
+
+	</script>
+</head>
+<body>
+
+</body>
+</html>

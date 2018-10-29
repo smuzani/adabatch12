@@ -4,8 +4,8 @@
 	<meta charset="utf-8">
 	<title>minmaxavg</title>
 	<script>
-		var input = [1,2,3,10];
-		console.log(avg(input));
+		var input = [1,2,3,4, -4];
+		console.log(minMaxAvg(input));
 
 		function avg(array) {
 			var total = 0;
@@ -14,6 +14,13 @@
 				total += array[i];
 			}
 			return total/numbers;
+		}
+
+		function minMaxAvg(array) {
+			var average = avg(array);
+			var min = Math.min.apply(null, array);
+			var max = Math.max.apply(null, array);
+			return [min, max, average];
 		}
 	</script>
 </head>
