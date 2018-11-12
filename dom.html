@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DOM</title>
+	
+</head>
+<body>
+	<h1 class="heading">Heading 1</h1>
+	<p id="par1">paragraph 1</p>
+	<p>paragraph 2</p>
+
+	<h2 class="heading">Heading 2</h2>
+
+	<ul id="list"></ul>
+
+	<script type="text/javascript">
+		document.getElementById("par1");
+		document.getElementsByTagName("p")[0].innerHTML = "<strong>paragraph</strong>";
+		document.getElementsByTagName("p")[1].innerHTML = "paragraph";
+		document.getElementsByClassName("heading");
+
+		var node = document.createElement("li");
+		node.innerHTML = "item 1";
+		var node2 = document.createElement("li");
+		node2.innerHTML = "item 2";
+		document.getElementById("list").appendChild(node2);
+		document.getElementById("list").appendChild(node);
+	</script>
+</body>
+</html>
