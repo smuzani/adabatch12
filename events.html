@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Events</title>
+</head>
+<body>
+	<img src="klcc.jpg" width="300" id="klcc">
+
+	<input type="text">
+
+	<script type="text/javascript">
+
+		document.getElementById("klcc").ondblclick = doubleClickKlcc;
+
+		function doubleClickKlcc() {
+			console.log('double clicked');
+		}
+
+		document.getElementById("klcc").addEventListener("click", function(){
+			alert("clicked");
+		});		
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>jquery</title>
+	<script src="jquery-3.3.1.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+
+	<script>
+		$(document).ready(function(){
+			// $('p').text("test");
+			// $('#abc').html("<strong>click</strong> this")
+			// $('p.third').text("This is the third paragraph");
+			// /*$('div').click(function(){
+			// 	alert("div clicked");
+			// });*/
+			// $('div').click(clicked);
+			// function clicked() {
+			// 	$('p:first()').fadeToggle();
+			// 	$('p:eq(1)').fadeToggle("slow");
+			// 	$('p:eq(2)').fadeToggle("10000");
+			// }
+
+			// var div = $("div#abc");
+			// div.animate({marginLeft: '30px', fontSize: '3em'});
+			
+			// $('p').hide("slow", function(){
+			// 	alert("paragraph is hidden");
+			// });
+			$('div#chain').fadeOut(1000).delay(500).fadeIn(1000);
+		});
+	</script>
+</head>
+<body>
+	<p>1</p>
+	<p>2</p>
+	<p class="third">3</p>
+	<div id="abc" class="third"></div>
+	<div id="chain">chaining example</div>
+
+</body>
+</html>

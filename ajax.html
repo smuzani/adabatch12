@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>AJAX</title>
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$.ajax({ url: "http://randomuser.me/api",
+				success: function(result) {
+					var firstName = result.results[0].name.first;
+					var lastName = result.results[0].name.last;
+					var name = firstName + " " + lastName;
+					var age = result.results[0].dob.age;
+					var dob = new Date(result.results[0].dob.date);
+					var showDob = dob.getDate() + "/" + (dob.getMonth() + 1) + "/" + dob.getFullYear();
+					var email = result.results[0].email;
+					var phone = result.results[0].phone;
+					var street = result.results[0].location.street;
+					var city = result.results[0].location.city;
+					var state = result.results[0].location.state;
+					var postcode = result.results[0].location.postcode;
+					var address = street + ", " + postcode + " " + city + ", " + state;
+					var imageUrl = result.results[0].picture.large;
+					
+					$("#name").text("Name: " + name);
+					$("#age").text("DOB: " + showDob + " (" + age + ")");
+					$("#email").text("Email: " + email);
+					$("#phone").text("Phone: " + phone);
+					$("#address").text("Address: " + address);
+					$("#photo").attr("src", imageUrl);
+				}
+			});
+		});
+	</script>
+</head>
+<body>
+	<img width="100" id="photo">
+	<p id="name"></p>
+	<p id="age"></p>
+	<p id="email"></p>
+	<p id="phone"></p>
+	<p id="address"></p>
+</body>
+</html>

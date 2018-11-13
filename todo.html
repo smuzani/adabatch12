@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>To Do List</title>
+</head>
+<body>
+	<h1>My To Do List</h1>
+	<label for="item">Enter a new item: </label>
+	<input type="text" name="item" id="input-item" placeholder="Item Name">
+	<button onclick="addItem()">Add item</button>
+	<ul id="items"></ul>
+
+	<script type="text/javascript">
+		function addItem() {
+			var itemName = document.getElementById("input-item").value;
+			var li = document.createElement("li");
+			li.innerHTML = itemName + " <button>Delete</button>";
+			document.getElementById("items").appendChild(li);
+		}
+
+	</script>
+</body>
+</html>
