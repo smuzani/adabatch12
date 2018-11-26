@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>AJAX POST</title>
+
+	<script src="jquery-3.3.1.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		getData();
+	});
+
+	function submitData() {
+		var id = $('#id').val();
+		var name = $('#name').val();
+		var phone = $('#phone').val();
+		var data = {"data": [{"id": id,"name": name,"phone": phone}]};
+		var url = "https://sheetdb.io/api/v1/5b6d4c46ce705";
+
+		$.ajax({ 
+			type: "POST", 
+			url: url,
+			data: data,
+			success: function(result) {
+				console.log(result);
+			}
+		});
+	}
+
+	function getData() {
+		var url = "https://sheetdb.io/api/v1/5b6d4c46ce705";
+		$.ajax({ 
+			type: "GET", 
+			url: url,
+			success: function(result) {
+				for (var i=0; i < result.length; i++){
+					var itemName = result[i].name + " (" + result[i].phone + ")";
+					addItem(itemName);
+				}
+			}
+		});	
+	}
+
+	function addItem(itemName) {
+		var li = document.createElement("li");
+		li.innerHTML = itemName + " <button>Delete</button>";
+		document.getElementById("users").appendChild(li);
+	}
+	</script>
+</head>
+<body>
+
+	<label for="id">ID</label>
+	<input type="text" id="id"></input> 
+	<br><br>
+	<label for="name">Name</label>
+	<input type="text" id="name"></input>
+	<br><br>
+	<label for="phone">Phone</label>
+	<input type="text" id="phone"></input>
+	<br><br>
+	<button onclick="submitData()">Submit</button>
+
+	<p>Users:</p>
+	<ol id="users"></ol>
+
+</body>
+</html>
