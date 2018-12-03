@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Geolocation</title>
+  </head>
+  <body>
+
+    <div class="container">
+      <h1 class="text-center">Locations</h1>
+      <div class="row">
+       <div class="col-4 text-center">
+         <p>DPulze Cyberjaya</p><br>
+         <img src="dpulze.jpg" class="img-fluid">
+         <br><br><p>03 123 4567</p>
+         <p id="distanceDpulze"></p>
+       </div>
+       <div class="col-4 text-center">
+         <p>Sunway Pyramid</p><br>
+         <img src="sunway-pyramid.png" class="img-fluid">
+         <br><br><p>03 123 4567</p>
+         <p id="distanceSunway"></p>
+       </div>
+       <div class="col-4 text-center">
+         <p>KLCC</p><br>
+         <img src="klcc.jpg" class="img-fluid">
+         <br><br><p>03 123 4567</p>
+         <p id="distanceKlcc"></p>
+       </div>
+      </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <script type="text/javascript">
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position){
+          var latitude = position.coords.latitude;
+          var longitude = position.coords.longitude;
+          // alert("Lat: " + latitude + " lng: " + longitude);
+          var myCoords = [latitude, longitude];
+          var klcc = [3.1594134, 101.7113847];
+          var dpulze = [2.9221739, 101.6488049];
+          var sunway = [3.0731728, 101.6053471];
+
+          var distanceToKlcc = haversineDistance(myCoords, klcc, false);
+          var distanceToSunway = haversineDistance(myCoords, sunway, false);
+          var distanceToDpulze = haversineDistance(myCoords, dpulze, false);
+          console.log('Distance to KLCC: ' + distanceToKlcc);
+
+          $("#distanceDpulze").text(distanceToDpulze.toPrecision(2) + "km");
+          $("#distanceKlcc").text(distanceToKlcc.toPrecision(2) + "km");
+          $("#distanceSunway").text(distanceToSunway.toPrecision(2) + "km");
+        });
+      }
+
+      function haversineDistance(coords1, coords2, isMiles) {
+        function toRad(x) {
+          return x * Math.PI / 180;
+        }
+
+        var lon1 = coords1[0];
+        var lat1 = coords1[1];
+
+        var lon2 = coords2[0];
+        var lat2 = coords2[1];
+
+        var R = 6371; // km
+
+        var x1 = lat2 - lat1;
+        var dLat = toRad(x1);
+        var x2 = lon2 - lon1;
+        var dLon = toRad(x2)
+        var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+          Math.sin(dLon / 2) * Math.sin(dLon / 2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c;
+
+        if(isMiles) d /= 1.60934;
+
+        return d;
+      }
+    </script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
