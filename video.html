@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>video</title>
+	<script src="jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<video id="video" poster="klcc.jpg" loop>
+		<source src="video/videoplayback.mp4" type="video/mp4">
+	</video>
+	<div class="controls">
+		<button id="playBtn">Play</button>
+		<button id="pauseBtn">Pause</button>
+		<input type="range" id="seekBar" value="0">
+		<label for="volume">Volume:</label>
+		<input type="range" id="volume" min="0" max="1" step="0.1" value="1">
+	</div>
+
+	<script type="text/javascript">
+		var video = document.getElementById("video");
+		var playBtn = $("#playBtn");
+		playBtn.click(function(e){
+			$("#video").trigger("play");
+		});
+		$("#pauseBtn").click(function(e){
+			$("#video").trigger("pause");
+		});
+		$("#seekBar").change(function(e){
+			var time = video.duration * (seekBar.value / 100);
+			video.currentTime = time;
+		});
+		video.addEventListener("timeupdate", function(e){
+			var value = (100 / video.duration) * video.currentTime;
+			seekBar.value = value;
+		});
+		seekBar.addEventListener("mousedown", function(e){
+			video.pause();
+		});
+		seekBar.addEventListener("mouseup", function(e){
+			video.play();
+		});
+
+		var volumeControl = document.getElementById("volume");
+		volumeControl.addEventListener("change", function(e){
+			video.volume = volumeControl.value;
+		})
+
+	</script>
+
+</body>
+</html>

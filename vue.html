@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="utf-8">
+	<title>Vue.js</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script src="jquery-3.3.1.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<div v-for="user in users">
+			<img v-bind:src="user.picture.medium" style="float: left">  
+			<p v-text="user.name.first + ' ' + user.name.last"></p>
+			<p v-text="user.email"></p>
+			<hr>
+		</div>
+	</div>
+
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				users: ""
+			}
+		});
+
+		$(document).ready(function(){
+			$.ajax({url: "https://randomuser.me/api/?results=10",
+				success: function(result){
+					app.users = result.results;
+				}
+			})
+		});
+	</script>
+</body>
+</html>
